@@ -1,4 +1,4 @@
-
+﻿
 cc.Class({
     extends: cc.Component,
 
@@ -68,7 +68,7 @@ cc.Class({
             //this.checkVersion();
         }
 */
-
+	
         cc.director.loadScene("login");
     },
     
@@ -108,8 +108,9 @@ cc.Class({
         var AudioMgr = require("AudioMgr");
         cc.vv.audioMgr = new AudioMgr();
         cc.vv.audioMgr.init();
-*/    
+    
         cc.args = this.urlParse();
+*/
     },
     
     urlParse: function() {

@@ -1,4 +1,4 @@
-cc.Class({
+﻿cc.Class({
     extends: cc.Component,
 
     properties: {
@@ -42,16 +42,11 @@ cc.Class({
 			body.runAction(action);
 		} else {
 			var data = {
-				dialog: dialog,
-				parent: parent,
+				dialog: dialog
 			};
 
 			var finished = cc.callFunc(function(target, node) {
 				node.dialog.active = false;
-
-				if (node.parent) {
-					node.parent.active = false;
-				}
 			}, this, data);
 
 			var action = cc.sequence(cc.spawn(cc.scaleTo(0.1, 0.7), cc.fadeTo(0.1, 120)),
