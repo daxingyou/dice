@@ -1,8 +1,39 @@
-﻿cc.Class({
+﻿
+String.prototype.format = function(args) { 
+    if (arguments.length>0) { 
+        var result = this; 
+        if (arguments.length == 1 && typeof (args) == "object") { 
+            for (var key in args) { 
+                var reg=new RegExp ("({"+key+"})","g"); 
+                result = result.replace(reg, args[key]); 
+            } 
+        } 
+        else { 
+            for (var i = 0; i < arguments.length; i++) { 
+                if(arguments[i]==undefined) { 
+                    return ""; 
+                } 
+                else { 
+                    var reg=new RegExp ("({["+i+"]})","g"); 
+                    result = result.replace(reg, arguments[i]); 
+                } 
+            } 
+        } 
+        return result; 
+    } 
+    else {
+        return this; 
+    } 
+};
+
+
+let crypto = require('CryptoJS');
+
+cc.Class({
     extends: cc.Component,
 
     properties: {
-
+		_loading : null
     },
 
     addClickEvent:function(node, target, component, handler, data) {
@@ -197,6 +228,73 @@
         }
 
         return params;
+    },
+
+	MD5(txt) {
+		return crypto.MD5(txt).toString();
+	},
+
+	showTips(content) {
+		cc.loader.loadRes("prefabs/CommonTips", (err, prefab) => {
+    		let node = cc.instantiate(prefab);
+			let root = cc.find('Canvas');
+
+    		root.addChild(node);
+			node.getChildByName('txtContent').getComponent(cc.Label).string = content;
+
+			let finish = cc.callFunc(() => {
+				root.removeChild(node);
+			});
+
+			let action = cc.sequence(cc.delayTime(1),
+									 cc.spawn(cc.moveBy(0.5, cc.p(0, 100)), cc.fadeOut(0.5)),
+									 finish);
+
+			node.runAction(action);
+		});
+	},
+
+	showLoading(enable) {
+		let self = this;
+		
+		if (enable) {
+			if (this._loading)
+				return;
+
+			cc.loader.loadRes("prefabs/loading", (err, prefab) => {
+				let node = cc.instantiate(prefab);
+				let root = cc.find('Canvas');
+
+				root.addChild(node);
+				self._loading = node;
+			});
+		} else {
+			if (!this._loading)
+				return;
+
+			let root = cc.find('Canvas');
+			root.removeChild(this._loading);
+			this._loading = null;
+		}
+	},
+
+	dateformat (tm) {
+        let date = new Date(tm);
+        let ret = "{0}-{1}-{2} {3}:{4}:{5}";
+        let year = date.getFullYear();
+        let month = date.getMonth() + 1;
+        month = month >= 10? month : ("0"+month);
+        let day = date.getDate();
+        day = day >= 10? day : ("0"+day);
+        let h = date.getHours();
+        h = h >= 10? h : ("0"+h);
+        let m = date.getMinutes();
+        m = m >= 10? m : ("0"+m);
+        let s = date.getSeconds();
+        s = s >= 10? s : ("0"+s);
+
+        ret = ret.format(year,month,day,h,m,s);
+        return ret;
     }
 });
 

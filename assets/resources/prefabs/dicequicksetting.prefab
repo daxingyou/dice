@@ -25,11 +25,11 @@
     "_active": false,
     "_components": [
       {
-        "__id__": 45
+        "__id__": 46
       }
     ],
     "_prefab": {
-      "__id__": 46
+      "__id__": 47
     },
     "_id": "",
     "_opacity": 255,
@@ -245,11 +245,11 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 43
+        "__id__": 44
       }
     ],
     "_prefab": {
-      "__id__": 44
+      "__id__": 45
     },
     "_id": "",
     "_opacity": 255,
@@ -1200,7 +1200,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "btnSure",
+    "_name": "btnSubmit",
     "_objFlags": 0,
     "_parent": {
       "__id__": 6
@@ -1221,7 +1221,7 @@
       }
     ],
     "_prefab": {
-      "__id__": 42
+      "__id__": 43
     },
     "_id": "",
     "_opacity": 255,
@@ -1411,7 +1411,11 @@
     "hoverSprite": {
       "__uuid__": "f0048c10-f03e-4c97-b9d3-3506e1d58952"
     },
-    "clickEvents": [],
+    "clickEvents": [
+      {
+        "__id__": 42
+      }
+    ],
     "_N$interactable": true,
     "_N$enableAutoGrayEffect": false,
     "_N$normalColor": {
@@ -1437,6 +1441,15 @@
     "_N$target": {
       "__id__": 36
     }
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 1
+    },
+    "component": "dicequicksetting",
+    "handler": "onBtnSubmit",
+    "customEventData": ""
   },
   {
     "__type__": "cc.PrefabInfo",

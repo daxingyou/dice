@@ -79,36 +79,36 @@ cc.Class({
         var pclient = require("pclient");
         cc.vv.pclient = new pclient();
 */
-        var Utils = require("Utils");
+        let Utils = require("Utils");
         cc.vv.utils = new Utils();
-/*
-        var UserMgr = require("UserMgr");
+
+        let UserMgr = require("UserMgr");
         cc.vv.userMgr = new UserMgr();
-        
+/*        
         var ReplayMgr = require("ReplayMgr");
         cc.vv.replayMgr = new ReplayMgr();
         
         cc.vv.URL = 'http://ip.rt155.com:9000';
-        cc.vv.http = require("HTTP");
         cc.vv.global = require("Global");
-        cc.vv.net = require("Net");
 
         var AnysdkMgr = require("AnysdkMgr");
         cc.vv.anysdkMgr = new AnysdkMgr();
         cc.vv.anysdkMgr.init();
-        
-        var GameNetMgr = require("GameNetMgr");
-        cc.vv.gameNetMgr = new GameNetMgr();
-        cc.vv.gameNetMgr.initHandlers();
-        
+*/
+        cc.vv.http = require("HTTP");
+        cc.vv.net = require("Net");
+
+        let GameMgr = require("GameMgr");
+        cc.vv.gameMgr = new GameMgr();
+
+		let AudioMgr = require("AudioMgr");
+        cc.vv.audioMgr = new AudioMgr();
+        cc.vv.audioMgr.init();
+/*        
         var VoiceMgr = require("VoiceMgr");
         cc.vv.voiceMgr = new VoiceMgr();
         cc.vv.voiceMgr.init();
         
-        var AudioMgr = require("AudioMgr");
-        cc.vv.audioMgr = new AudioMgr();
-        cc.vv.audioMgr.init();
-    
         cc.args = this.urlParse();
 */
     },

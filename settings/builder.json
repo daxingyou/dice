@@ -19,8 +19,8 @@
   },
   "packageName": "com.dinosaur.dice",
   "privateKey": "",
+  "renderMode": "0",
   "startScene": "b81fd48c-8a39-4a1c-903b-04f73e013aec",
   "title": "dice",
-  "webOrientation": "landscape",
-  "renderMode": "0"
+  "webOrientation": "landscape"
 }
