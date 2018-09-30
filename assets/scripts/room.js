@@ -241,6 +241,7 @@ cc.Class({
 	doOthersBet (bet) {
 		let robots = cc.vv.gameMgr.room.robots;
 		let seat_id = -1;
+		let self = this;
 
 		for (let i = 0; i < robots.length; i++) {
 			let rb = robots[i];
