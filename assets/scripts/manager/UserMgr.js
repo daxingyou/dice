@@ -8,7 +8,8 @@ cc.Class({
 		nickname : null,
 		balance : 0,
 		avatar : 0,
-		profit : 0
+		profit : 0,
+		amount : 0
     },
 
 	reset () {
@@ -19,6 +20,7 @@ cc.Class({
 		this.balance = 0;
 		this.avatar = 0;
 		this.profit = 0;
+		this.amount  = 0;
 	},
 
 	login (account, passwd_md5, cb) {

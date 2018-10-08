@@ -1,6 +1,6 @@
 
 const MIN = 1000;
-const MAX = 500000;
+const MAX = 2000000;
 
 cc.Class({
     extends: cc.Component,

@@ -14994,8 +14994,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 150.16,
-      "height": 40
+      "width": 334.69,
+      "height": 37.5
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -15026,10 +15026,12 @@
     "_fontSize": 30,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "f34b663a-ab98-4afe-b41e-970b294b4fb0"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
-    "_N$string": "123456789",
+    "_N$string": "0123456789",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -15068,8 +15070,8 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 150.16,
-      "height": 40
+      "width": 334.69,
+      "height": 37.5
     },
     "_rotationX": 0,
     "_rotationY": 0,
@@ -15100,10 +15102,12 @@
     "_fontSize": 30,
     "_lineHeight": 40,
     "_enableWrapText": true,
-    "_N$file": null,
-    "_isSystemFontUsed": true,
+    "_N$file": {
+      "__uuid__": "f34b663a-ab98-4afe-b41e-970b294b4fb0"
+    },
+    "_isSystemFontUsed": false,
     "_spacingX": 0,
-    "_N$string": "123456789",
+    "_N$string": "0123456789",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -24310,7 +24314,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 370.15,
+      "width": 403.52,
       "height": 40
     },
     "_rotationX": 0,
@@ -24338,14 +24342,14 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 40,
+    "_actualFontSize": 30,
     "_fontSize": 30,
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "快压设置为1000-10000之间",
+    "_N$string": "快压设置为1000-2000000之间",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -24717,7 +24721,7 @@
       "b": 255,
       "a": 255
     },
-    "_N$placeholder": "快压设置为1000-10000之间",
+    "_N$placeholder": "快压设置为1000-2000000之间",
     "_N$placeholderFontSize": 30,
     "_N$placeholderFontColor": {
       "__type__": "cc.Color",
@@ -29689,7 +29693,7 @@
     },
     "_children": [],
     "_tag": -1,
-    "_active": true,
+    "_active": false,
     "_components": [
       {
         "__id__": 838

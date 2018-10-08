@@ -675,7 +675,7 @@
     },
     "_contentSize": {
       "__type__": "cc.Size",
-      "width": 370.15,
+      "width": 403.52,
       "height": 40
     },
     "_rotationX": 0,
@@ -703,14 +703,14 @@
     },
     "_enabled": true,
     "_useOriginalSize": false,
-    "_actualFontSize": 40,
+    "_actualFontSize": 30,
     "_fontSize": 30,
     "_lineHeight": 40,
     "_enableWrapText": true,
     "_N$file": null,
     "_isSystemFontUsed": true,
     "_spacingX": 0,
-    "_N$string": "快压设置为1000-10000之间",
+    "_N$string": "快压设置为1000-2000000之间",
     "_N$horizontalAlign": 1,
     "_N$verticalAlign": 1,
     "_N$fontFamily": "Arial",
@@ -1082,7 +1082,7 @@
       "b": 255,
       "a": 255
     },
-    "_N$placeholder": "快压设置为1000-10000之间",
+    "_N$placeholder": "快压设置为1000-2000000之间",
     "_N$placeholderFontSize": 30,
     "_N$placeholderFontColor": {
       "__type__": "cc.Color",

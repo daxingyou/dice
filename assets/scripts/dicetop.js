@@ -54,10 +54,10 @@ cc.Class({
 
 			item.getChildByName('txtTop').getComponent(cc.Label).string = '' + i;
 			item.getChildByName('txtName').getComponent(cc.Label).string = player.nickname;
-			item.getChildByName('txtMoney').getComponent(cc.Label).string = player.balance;
-			item.getChildByName('txtGift').getComponent(cc.Label).string = player.gift;
+			//item.getChildByName('txtMoney').getComponent(cc.Label).string = player.balance;
+			//item.getChildByName('txtGift').getComponent(cc.Label).string = player.gift;
 			// TODO
-			item.getChildByName('btnGetGift').active = false;
+			//item.getChildByName('btnGetGift').active = false;
 		}
 
 		this.shrink(content, players.length);

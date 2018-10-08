@@ -353,6 +353,8 @@ cc.Class({
 				self.bigEffect.setIndex(1);
 			else if (result[0] == 'S')
 				self.smallEffect.setIndex(1);
+
+			self.showProfit();
 		});
 
 		let close = cc.callFunc(() => {
@@ -617,7 +619,8 @@ cc.Class({
 		let param = {
 			uid : um.uid,
 			bet : this.bigOrSmall,
-			amount : amount
+			amount : amount,
+			quick : true
 		};
 
 		net.send('player_bet', { bet : param });
@@ -685,7 +688,39 @@ cc.Class({
         let dialog = this.node.getChildByName('diceresult');
 
         cc.vv.utils.showDialog(dialog, 'body', true);
-    }
+    },
+
+	showProfit() {
+		let up = this.myPlayer.getComponent('UserPanel');
+		let um = cc.vv.userMgr;
+		let profit = um.profit - um.amount;
+
+		up.setMoney(um.balance);
+
+		if (profit == 0)
+			return;
+
+		let tips = 'prefabs/' + (profit > 0 ? 'winTips' : 'loseTips');
+		let content = (profit > 0 ? '+' : '') + profit;
+
+		cc.loader.loadRes(tips, (err, prefab) => {
+    		let node = cc.instantiate(prefab);
+			let root = cc.find('Canvas');
+
+    		root.addChild(node);
+			node.getComponent(cc.Label).string = content;
+
+			let finish = cc.callFunc(() => {
+				root.removeChild(node);
+			});
+
+			let action = cc.sequence(cc.delayTime(1),
+									 cc.spawn(cc.moveBy(0.5, cc.p(0, 100)), cc.fadeOut(0.5)),
+									 finish);
+
+			node.runAction(action);
+		});
+	},
 });
 
 

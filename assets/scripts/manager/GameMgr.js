@@ -7,6 +7,8 @@ cc.Class({
 
 		room : null,
 
+		last : null,
+
 		smallBet : 0,
 		bigBet : 0
     },
@@ -34,6 +36,14 @@ cc.Class({
 		
         net.on('enter_room_re', data => {
 			self.room = data;
+			let last = data.last;
+
+			if (last) {			
+				self.last = last;
+				self.last.profit = 0;
+				self.last.amount = 0;
+			}
+			
 			cc.director.loadScene("room");
         });
 
@@ -75,15 +85,28 @@ cc.Class({
 
 				um.balance = me.balance;
 				um.profit = me.profit;
+				um.amount = me.amount;
 			}
 
 			self.dispatchEvent('game_stage_update');
 
+			if (data.stage == 'open') {
+				self.last = {
+					banker : banker,
+					stat : data.stat,
+					result : data.result,
+					records : data.records,
+					dices : data.dices,
+					profit : me.profit,
+					amount : me.amount
+				};
+			}
+
 			if (banker)
 				self.dispatchEvent('game_banker_update', banker);
 
-			if (me)
-				self.dispatchEvent('game_self_update', me);
+			//if (me)
+			//	self.dispatchEvent('game_self_update', me);
 
 			let records = data.records;
 			if (records)
@@ -148,9 +171,6 @@ cc.Class({
 		let http = cc.vv.http;
 		let um = cc.vv.userMgr;
 		let self = this;
-
-		console.log('enter refreshUser');
-		
 		let param = {
 			uid : um.uid
 		};
@@ -169,6 +189,7 @@ cc.Class({
 
 			um.avatar = data.avatar;
 			um.balance = data.balance;
+			um.nickname = data.nickname;
 			self.dispatchEvent('game_self_update');
 		});
 	},

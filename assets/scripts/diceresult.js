@@ -67,27 +67,28 @@ cc.Class({
 
 		let gm = cc.vv.gameMgr;
 		let room = gm.room;
+		let last = gm.last;
+
+		if (!last)
+			return;
 
 		txtServerName.string = room.server;
-		txtBankerName.string = room.banker.nickname;
-		txtTotalBetBig.string = '' + room.stat.big_bet_total;
-		txtBankerMoney.string = '' + room.banker.balance;
-		txtTotalBetSmall.string = '' + room.stat.small_bet_total;
-		txtBankerWin.string = '0'; // TODO
-		txtLeopard.string = '' + room.stat.triple;
-		txtTotalBig.string = '' + room.stat.big;
-		txtTotalSmall.string = '' + room.stat.small;
+		txtBankerName.string = last.banker.nickname;
+		txtTotalBetBig.string = '' + last.stat.big_bet_total;
+		txtBankerMoney.string = '' + last.banker.banker_amount;
+		txtTotalBetSmall.string = '' + last.stat.small_bet_total;
+		txtBankerWin.string = '' + (last.banker.profit - last.banker.banker_amount);
+		txtLeopard.string = '' + last.stat.triple;
+		txtTotalBig.string = '' + last.stat.big;
+		txtTotalSmall.string = '' + last.stat.small;
 
 		let content = body.getChildByName('content');
-		let records = room.records;
+		let records = last.records;
 		let cnt = records.length;
 
 		for (let i = 0; i < cnt; i++) {
 			let item = this.getItem(content, i);
 			let record = records[i];
-
-			console.log("record[0]: " + record[0]);
-			console.log('index: ' + this.getIndex(record[0]));
 
 			item.getChildByName('txtValue').getComponent(cc.Label).string = record.substring(1, 4);
 			item.getChildByName('txtBigOrSmall').getComponent('SpriteMgr').setIndex(this.getIndex(record[0]));

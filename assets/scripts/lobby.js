@@ -13,7 +13,11 @@ cc.Class({
 
 		this.node.on('game_self_update', () => {
 			let up = user_panel.getComponent('UserPanel');
-			up.setMoney(cc.vv.userMgr.balance);
+			let um = cc.vv.userMgr;
+			
+			up.setMoney(um.balance);
+			up.setAvatar(um.avatar);
+			up.setName(um.nickname);
 		});
     },
 
@@ -55,7 +59,13 @@ cc.Class({
         cc.vv.utils.showDialog(dialog, 'body', true);
     },
 
-    // update (dt) {},
+    onBtnHead() {
+		cc.vv.audioMgr.playBtnClicked();
+	
+        let dialog = this.node.getChildByName('DialogPerson');
+	
+		cc.vv.utils.showDialog(dialog, 'body', true);
+    }
 });
 
 
