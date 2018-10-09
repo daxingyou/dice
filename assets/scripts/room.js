@@ -178,20 +178,20 @@ cc.Class({
 	},
 
 	updateBetNum () {
-		let gm = cc.vv.gameMgr;
+		let um = cc.vv.userMgr;
 
-		let big = gm.bigBet > 0;
+		let big = um.bet == 'big';
 		this.myBetBigNode.active = big;
 		if (big) {
 			let txt = this.myBetBigNode.getChildByName('txtMyValue').getComponent(cc.Label);
-			txt.string = '' + gm.bigBet;
+			txt.string = '' + um.amount;
 		}
 
-		let small = gm.smallBet > 0;
+		let small = um.bet == 'small';
 		this.myBetSmallNode.active = small;
 		if (small) {
 			let txt = this.myBetSmallNode.getChildByName('txtMyValue').getComponent(cc.Label);
-			txt.string = '' + gm.smallBet;
+			txt.string = '' + um.amount;
 		}
 	},
 

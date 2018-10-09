@@ -7,10 +7,7 @@ cc.Class({
 
 		room : null,
 
-		last : null,
-
-		smallBet : 0,
-		bigBet : 0
+		last : null
     },
     
     reset () {
@@ -38,10 +35,20 @@ cc.Class({
 			self.room = data;
 			let last = data.last;
 
-			if (last) {			
+			if (last) {
 				self.last = last;
 				self.last.profit = 0;
 				self.last.amount = 0;
+			}
+
+			let me = data.myself;
+			if (me) {
+				let um = cc.vv.userMgr;
+
+				um.balance = me.balance;
+				um.profit = me.profit;
+				um.amount = me.amount;
+				um.bet = me.bet;
 			}
 			
 			cc.director.loadScene("room");
@@ -63,10 +70,12 @@ cc.Class({
 
 		net.on('game_stage_push', data => {
 			let room = self.room;
+			let um = cc.vv.userMgr;
 			let fs = [ 'stage', 'round', 'expire', 'dices', 'result', 'records', 'stat', 'robots' ];
 
-			self.smallBet = 0;
-			self.bigBet = 0;
+			um.profit = 0;
+			um.amount = 0;
+			um.bet = '';
 
 			fs.forEach(x => {
 				if (data[x] != null)
@@ -81,11 +90,10 @@ cc.Class({
 
 			let me = data.myself;
 			if (me) {
-				let um = cc.vv.userMgr;
-
 				um.balance = me.balance;
 				um.profit = me.profit;
 				um.amount = me.amount;
+				um.bet = me.bet;
 			}
 
 			self.dispatchEvent('game_stage_update');
@@ -99,7 +107,8 @@ cc.Class({
 					records : data.records,
 					dices : data.dices,
 					profit : me.profit,
-					amount : me.amount
+					amount : me.amount,
+					bet : me.bet
 				};
 			}
 
@@ -120,18 +129,15 @@ cc.Class({
 			
 			if (data.valid) {
 				if (bet.uid == um.uid) {
-					if (bet.bet == 'small')
-						self.smallBet += bet.amount;
-					else if (bet.bet == 'big')
-						self.bigBet += bet.amount;
-
+					um.bet = bet.bet;
+					um.amount += bet.amount;
 					um.balance = data.balance;
 					self.dispatchEvent('game_self_update');
 				}
-			}
 
-			if (data.valid)
-				self.room.status = data.status;
+				if (self.room)
+					self.room.status = data.status;
+			}				
 
 			self.dispatchEvent('player_bet_push', data);
 		});

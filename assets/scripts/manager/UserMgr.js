@@ -9,7 +9,8 @@ cc.Class({
 		balance : 0,
 		avatar : 0,
 		profit : 0,
-		amount : 0
+		amount : 0,
+		bet : ''
     },
 
 	reset () {
