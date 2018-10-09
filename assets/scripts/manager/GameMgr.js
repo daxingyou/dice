@@ -94,6 +94,7 @@ cc.Class({
 				self.last = {
 					banker : banker,
 					stat : data.stat,
+					status : data.status,
 					result : data.result,
 					records : data.records,
 					dices : data.dices,

@@ -74,10 +74,10 @@ cc.Class({
 
 		txtServerName.string = room.server;
 		txtBankerName.string = last.banker.nickname;
-		txtTotalBetBig.string = '' + last.stat.big_bet_total;
-		txtBankerMoney.string = '' + last.banker.banker_amount;
-		txtTotalBetSmall.string = '' + last.stat.small_bet_total;
-		txtBankerWin.string = '' + (last.banker.profit - last.banker.banker_amount);
+		txtTotalBetBig.string = '' + last.status.big_total;
+		txtBankerMoney.string = '' + last.banker.amount;
+		txtTotalBetSmall.string = '' + last.status.small_total;
+		txtBankerWin.string = '' + (last.banker.profit - last.banker.amount);
 		txtLeopard.string = '' + last.stat.triple;
 		txtTotalBig.string = '' + last.stat.big;
 		txtTotalSmall.string = '' + last.stat.small;

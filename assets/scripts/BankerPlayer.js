@@ -50,7 +50,7 @@ cc.Class({
 		let banker = gm.room.banker;
 
 		this.setName(banker.nickname);
-		this.setMoney(banker.banker_amount);
+		this.setMoney(banker.amount);
 		this.setAvatar(banker.avatar);
 	},
 });

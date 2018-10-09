@@ -59,11 +59,12 @@ cc.Class({
 
 			let banker = last.banker;
 			let stat = last.stat;
+			let status = last.status;
 
 			node.getChildByName('txtBankerName').getComponent(cc.Label).string = banker.nickname;
-			node.getChildByName('txtBankerMoney').getComponent(cc.Label).string = '' + banker.banker_amount;
-			node.getChildByName('txtTotalBig').getComponent(cc.Label).string = stat.big_bet_total;
-			node.getChildByName('txtTotalSmall').getComponent(cc.Label).string = stat.small_bet_total;
+			node.getChildByName('txtBankerMoney').getComponent(cc.Label).string = '' + banker.amount;
+			node.getChildByName('txtTotalBig').getComponent(cc.Label).string = status.big_total;
+			node.getChildByName('txtTotalSmall').getComponent(cc.Label).string = status.small_total;
 			node.getChildByName('txtWinMoney').getComponent(cc.Label).string = Math.abs(last.profit - last.amount);
 			node.getChildByName('txtTips').getComponent(cc.Label).string = last.profit >= last.amount ? '赢了' : '输了';
 		}
